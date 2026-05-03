@@ -11,28 +11,28 @@ const features = [
     eyebrow: "Self-custody first",
     copy:
       "Encrypted key storage, biometric unlock, hardware-wallet pairing, transaction simulation, and permission warnings keep control with the owner.",
-    icon: "shield",
+    icon: "circle",
   },
   {
     title: "Modern UI",
     eyebrow: "Clarity at speed",
     copy:
       "A refined portfolio view surfaces balances, staking rewards, gas estimates, and risk signals without burying users in chain jargon.",
-    icon: "spark",
+    icon: "connection",
   },
   {
     title: "Fast Transactions",
     eyebrow: "Built for motion",
     copy:
       "Cosmos routes swaps, sends, and bridge actions through low-latency endpoints with clear fees before a signature is requested.",
-    icon: "bolt",
+    icon: "planet",
   },
   {
     title: "Cross-Platform",
     eyebrow: "One wallet everywhere",
     copy:
       "Use Cosmos on iOS, Android, desktop, and browser with synchronized preferences and local-first account recovery guidance.",
-    icon: "devices",
+    icon: "rocket",
   },
 ];
 
@@ -67,11 +67,7 @@ const ecosystem = [
 ];
 
 function Icon({ type }: { type: string }) {
-  return (
-    <span className={`icon icon-${type}`} aria-hidden="true">
-      <span />
-    </span>
-  );
+  return <span className={`icon icon-${type}`} aria-hidden="true" />;
 }
 
 export default function Home() {
@@ -104,7 +100,7 @@ export default function Home() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-scene" role="img"
                aria-label="Cosmos Wallet interface floating over a connected blockchain network">
-            <div className="star-field"/>
+            <div className="star-featuresfield"/>
           </div>
 
           <div className="container hero-content fade-up">
