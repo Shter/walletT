@@ -70,6 +70,16 @@ function Icon({ type }: { type: string }) {
   return <span className={`icon icon-${type}`} aria-hidden="true" />;
 }
 
+function ArrowIcon() {
+  return (
+    <svg className="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30" aria-hidden="true">
+      <desc>Arrow right icon</desc>
+      <path fill="currentColor" d="M9.997 19.997v-10h10v10zM0 29.998V20h10v10z"></path>
+      <path fill="currentColor" d="M0 10V0h10v10z"></path>
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -85,13 +95,9 @@ export default function Home() {
             <a href="#download">Download</a>
           </div>
 
-          <a className="nav-cta" href="#download">
+          <a className="nav-cta download-action" href="#download">
             Download
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30" aria-hidden="true">
-              <desc>Arrow right icon</desc>
-              <path fill="currentColor" d="M9.997 19.997v-10h10v10zM0 29.998V20h10v10z"></path>
-              <path fill="currentColor" d="M0 10V0h10v10z"></path>
-            </svg>
+            <ArrowIcon />
           </a>
         </nav>
       </header>
@@ -100,7 +106,7 @@ export default function Home() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-scene" role="img"
                aria-label="Cosmos Wallet interface floating over a connected blockchain network">
-            <div className="star-featuresfield"/>
+            <div className="star-field"/>
           </div>
 
           <div className="container hero-content fade-up">
@@ -111,8 +117,9 @@ export default function Home() {
               interface across every chain they use.
             </p>
             <div className="hero-actions">
-              <a className="button button-secondary" href="#features">
-                Explore Features
+              <a className="button button-primary cosmo-note-cta download-action" href="#download">
+                Download Wallet
+                <ArrowIcon />
               </a>
             </div>
           </div>
@@ -120,9 +127,7 @@ export default function Home() {
 
         <section className="cosmo-note" aria-label="Cosmos Wallet app preview">
           <img src="/comsonote.png" alt="" aria-hidden="true" />
-          <a className="button button-primary cosmo-note-cta" href="#download">
-            Download Wallet
-          </a>
+
         </section>
 
         <section className="stats" aria-label="Cosmos Wallet network statistics">
@@ -177,8 +182,9 @@ export default function Home() {
               <p>
                 Cosmos labels approvals, simulates contract calls, highlights destination changes, and separates high-value vaults from daily spending accounts. Every warning is written for humans, not just protocol engineers.
               </p>
-              <a className="button button-primary" href="#download">
+              <a className="button button-primary download-action" href="#download">
                 Download Wallet
+                <ArrowIcon />
               </a>
             </div>
             <div className="security-panel fade-up" aria-label="Security checks preview">
@@ -213,10 +219,15 @@ export default function Home() {
           </div>
           <div className="container ecosystem-grid" aria-label="Cosmos Wallet supported tools">
             {ecosystem.map((item) => (
-              <a className="ecosystem-item fade-up" href="#download" key={item}>
-                <span className="mini-mark" aria-hidden="true" />
+              <div className="ecosystem-item fade-up" key={item}>
+                <span className="mini-mark" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 30">
+                    <path fill="currentColor" d="M9.997 19.997v-10h10v10zM0 29.998V20h10v10z" />
+                    <path fill="currentColor" d="M0 10V0h10v10z" />
+                  </svg>
+                </span>
                 {item}
-              </a>
+              </div>
             ))}
           </div>
         </section>
@@ -228,8 +239,9 @@ export default function Home() {
               <h2 id="download-title">Download Cosmos Wallet for every device.</h2>
               <p>Join the private release list for mobile, desktop, and browser builds with audited account recovery and fast multichain routing.</p>
             </div>
-            <a className="button button-primary" href="mailto:download@cosmos-wallet.example">
+            <a className="button button-primary download-action" href="mailto:download@cosmos-wallet.example">
               Download Wallet
+              <ArrowIcon />
             </a>
           </div>
         </section>
