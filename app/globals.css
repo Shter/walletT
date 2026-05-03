@@ -204,19 +204,33 @@ p {
 .star-field {
   position: absolute;
   inset: 0;
-  opacity: 0.78;
+  opacity: 0.96;
   background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.76) 0 1px, transparent 1.6px),
-    radial-gradient(circle, rgba(63, 194, 255, 0.65) 0 1px, transparent 1.8px);
-  background-position: 0 0, 38px 58px;
-  background-size: 116px 116px, 168px 168px;
-  animation: drift 22s linear infinite;
+    radial-gradient(circle, rgba(255, 255, 255, 0.72) 8 1px, transparent 3px),
+    radial-gradient(circle, rgba(63, 194, 255, 0.46) 9 1px, transparent 1.8px);
+  background-position: 0 0, 19px 37px, 61px 11px, 101px 83px, 148px 52px;
+  background-size: 54px 71px, 87px 63px, 128px 91px, 173px 119px, 227px 157px;
+  animation: driftChaos 20s infinite;
+}
+
+.star-field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.82;
+  background-image:
+    radial-gradient(circle at 8% 18%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 21% 63%, rgba(255, 255, 255, 0.62) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 21% 63%, rgba(255, 255, 255, 0.62) 0 1px, transparent 1.5px),
+radial-gradient(circle at 8% 18%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px);
+  background-size: 311px 251px, 263px 337px, 421px 293px, 379px 467px, 541px 359px, 607px 431px;
+  animation: driftChaos 44s linear infinite;
 }
 
 .orbit {
   position: absolute;
-  left: 50%;
-  top: 47%;
+  left: clamp(340px, calc((100vw - min(100% - 40px, var(--max-width))) / 2 + 380px), 50%);
+  top: clamp(250px, 43vh, 430px);
   border: 1px solid rgba(63, 194, 255, 0.22);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(-18deg);
@@ -790,7 +804,13 @@ h2 {
 
 @keyframes drift {
   to {
-    background-position: 116px 116px, 206px 174px;
+    background-position: 54px 71px, 106px 100px, 189px 102px, 274px 202px, 375px 209px;
+  }
+}
+
+@keyframes driftChaos {
+  to {
+    transform: translate3d(-72px, 48px, 0);
   }
 }
 
@@ -837,6 +857,11 @@ h2 {
     padding-top: 390px;
   }
 
+  .orbit {
+    left: 50%;
+    top: 58%;
+  }
+
   .stats-grid,
   .feature-grid,
   .ecosystem-grid {
@@ -880,6 +905,10 @@ h2 {
 
   .hero-content {
     padding-top: 374px;
+  }
+
+  .orbit {
+    top: 55%;
   }
 
   h1 {

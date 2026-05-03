@@ -105,8 +105,6 @@ export default function Home() {
           <div className="hero-scene" role="img"
                aria-label="Cosmos Wallet interface floating over a connected blockchain network">
             <div className="star-field"/>
-            <div className="orbit orbit-one"/>
-            <div className="orbit orbit-two"/>
           </div>
 
           <div className="container hero-content fade-up">
