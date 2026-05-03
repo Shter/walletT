@@ -372,6 +372,59 @@ h1 {
   margin-top: 34px;
 }
 
+.cosmo-note {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(420px, 64vw, 820px);
+  overflow: hidden;
+  background:
+    linear-gradient(to bottom, var(--primary) 0%, rgba(30, 30, 30, 0) 18%, rgba(30, 30, 30, 0) 78%, var(--primary) 100%),
+    #050505;
+}
+
+.cosmo-note::before,
+.cosmo-note::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 28%;
+  pointer-events: none;
+}
+
+.cosmo-note::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+}
+
+.cosmo-note::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--primary), transparent);
+}
+
+.cosmo-note img {
+  width: min(100%, 1536px);
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.92;
+}
+
+.cosmo-note-cta {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+}
+
+.cosmo-note-cta:hover {
+  transform: translate(-50%, calc(-50% - 2px));
+}
+
 .stats {
   padding: 28px 0;
 }

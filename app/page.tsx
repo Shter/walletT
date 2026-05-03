@@ -117,14 +117,18 @@ export default function Home() {
               interface across every chain they use.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#download">
-                Download Wallet
-              </a>
               <a className="button button-secondary" href="#features">
                 Explore Features
               </a>
             </div>
           </div>
+        </section>
+
+        <section className="cosmo-note" aria-label="Cosmos Wallet app preview">
+          <img src="/comsonote.png" alt="" aria-hidden="true" />
+          <a className="button button-primary cosmo-note-cta" href="#download">
+            Download Wallet
+          </a>
         </section>
 
         <section className="stats" aria-label="Cosmos Wallet network statistics">
