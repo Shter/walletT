@@ -182,6 +182,25 @@ p {
 .nav-cta.download-action:hover {
   background: #1e1f20;
   color: #fff;
+  border-color: transparent;
+}
+
+.nav-cta.download-action {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.hero-actions .download-action {
+  background: #1e1f20;
+  color: #fff;
+  border-color: transparent;
+}
+
+.hero-actions .download-action:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
 }
 
 .button-secondary {
@@ -200,6 +219,9 @@ p {
   min-height: calc(100vh - 74px);
   display: grid;
   padding: 130px 0 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.66) 72%, var(--primary)),
+    url("/hero%20cosmo.jpg") center/cover no-repeat;
 }
 
 .hero::after {
@@ -208,6 +230,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
   height: 34%;
   background: linear-gradient(to top, var(--primary), transparent);
   pointer-events: none;
@@ -216,32 +239,11 @@ p {
 .hero-scene {
   position: absolute;
   inset: 0;
-  isolation: isolate;
+  z-index: 0;
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.36)),
+    url("/hero%20cosmo.jpg") center/cover no-repeat;
   pointer-events: none;
-}
-
-.star-field {
-  position: absolute;
-  inset: 0;
-  opacity: 0.96;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.72) 8 1px, transparent 3px),
-    radial-gradient(circle, rgba(63, 194, 255, 0.46) 9 1px, transparent 1.8px);
-  background-position: 0 0, 19px 37px, 61px 11px, 101px 83px, 148px 52px;
-  background-size: 54px 71px, 87px 63px, 128px 91px, 173px 119px, 227px 157px;
-  animation: drift 1s linear infinite;
-}
-
-.star-field::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.82;
-  background-image:
-    radial-gradient(circle at 8% 18%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
-    radial-gradient(circle at 21% 63%, rgba(255, 255, 255, 0.62) 0 1px, transparent 1.5px);
-  background-size: 311px 251px, 263px 337px, 421px 293px, 379px 467px, 541px 359px, 607px 431px;
-  animation: driftChaos 50s linear infinite;
 }
 
 .orbit {
@@ -478,6 +480,49 @@ h1 {
 .ecosystem,
 .download {
   padding: 104px 0;
+}
+
+.trust {
+  padding-bottom: 0;
+}
+
+.security-bridge {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.security-bridge::before,
+.security-bridge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 30%;
+  pointer-events: none;
+}
+
+.security-bridge::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+}
+
+.security-bridge::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--primary), transparent);
+}
+
+.security-bridge img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 28vw, 420px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.ecosystem {
+  padding-top: 0;
 }
 
 .download{
@@ -795,19 +840,37 @@ h2 {
 }
 
 .footer {
-  padding: 42px 0 30px;
-  background: #171717;
+  padding: 56px 0 36px;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent 18%),
+    #111111;
 }
 
 .footer-layout {
   display: grid;
   grid-template-columns: 1fr auto auto;
   gap: 42px;
-  align-items: start;
+  align-items: center;
 }
 
 .footer p {
   margin-top: 14px;
+  max-width: 420px;
+  color: var(--muted);
+}
+
+.footer .brand {
+  gap: 12px;
+}
+
+.footer-logo {
+  width: 124px;
+  height: 22px;
+}
+
+.footer-links {
+  flex-wrap: wrap;
 }
 
 .footer-links,
@@ -820,22 +883,28 @@ h2 {
   color: var(--muted);
 }
 
+.footer-links a {
+  padding: 8px 0;
+}
+
 .socials a {
   display: grid;
   place-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(184, 184, 184, 0.24);
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--muted);
   font-size: 0.75rem;
   font-weight: 800;
-  transition: color 180ms ease, border-color 180ms ease;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .socials a:hover {
   color: var(--secondary);
   border-color: rgba(184, 184, 184, 0.58);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .copyright {

@@ -104,10 +104,11 @@ export default function Home() {
 
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-scene" role="img"
-               aria-label="Cosmos Wallet interface floating over a connected blockchain network">
-            <div className="star-field"/>
-          </div>
+          <div
+            className="hero-scene"
+            role="img"
+            aria-label="Cosmos Wallet interface floating over a connected blockchain network"
+          />
 
           <div className="container hero-content fade-up">
             <p className="eyebrow">Secure multichain self-custody</p>
@@ -212,6 +213,10 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="security-bridge" aria-hidden="true">
+          <img src="/bluecosmo.jpg" alt="" />
+        </section>
+
         <section className="ecosystem" id="ecosystem" aria-labelledby="ecosystem-title">
           <div className="container section-heading fade-up">
             <p className="eyebrow">Explore chains, apps, and tools</p>
@@ -251,8 +256,7 @@ export default function Home() {
         <div className="container footer-layout">
           <div>
             <a className="brand" href="#top" aria-label="Cosmos Wallet home">
-              <span className="brand-mark" aria-hidden="true" />
-              Cosmos Wallet
+              <span className="cosmos-logo footer-logo" aria-hidden="true" />
             </a>
             <p>Secure self-custody for a multichain world.</p>
           </div>
@@ -268,7 +272,6 @@ export default function Home() {
             <a href="https://discord.com" aria-label="Cosmos Wallet on Discord">DC</a>
           </div>
         </div>
-        <div className="container copyright">Copyright 2026 Cosmos Wallet. All rights reserved.</div>
       </footer>
     </>
   );
