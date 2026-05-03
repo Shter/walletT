@@ -1,7 +1,7 @@
 :root {
-  --primary: #1e1e1e;
+  --primary: #000;
   --primary-soft: #272727;
-  --accent: #3fc2ff;
+  --accent: #b8b8b8;
   --secondary: #ffffff;
   --muted: #a0a0a0;
   --line: rgba(255, 255, 255, 0.12);
@@ -22,7 +22,7 @@ body {
   margin: 0;
   background: var(--primary);
   color: var(--secondary);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-the-future), ui-sans-serif, system-ui, sans-serif;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
 }
@@ -49,8 +49,8 @@ h2,
 h3,
 strong,
 b {
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  font-weight: 800;
+  font-family: inherit;
+  font-weight: 400;
 }
 
 h1,
@@ -65,19 +65,20 @@ p {
   margin: 0 auto;
 }
 
-.section-band {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--line);
+.cosmos-logo {
+  display: block;
+  width: 105px;
+  height: 19px;
+  background: #fff;
+  mask: url("/cosmos.svg") center / contain no-repeat;
+  -webkit-mask: url("/cosmos.svg") center / contain no-repeat;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(30, 30, 30, 0.82);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(18px);
+  background: #000;
 }
 
 .nav {
@@ -94,6 +95,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  color: #fff;
   font-weight: 800;
   white-space: nowrap;
 }
@@ -101,11 +103,11 @@ p {
 .brand-mark {
   width: 30px;
   height: 30px;
-  border: 1px solid rgba(63, 194, 255, 0.78);
+  border: 1px solid rgba(184, 184, 184, 0.78);
   border-radius: 50%;
   background: radial-gradient(circle at 50% 50%, var(--accent) 0 3px, transparent 4px),
-    conic-gradient(from 30deg, transparent, rgba(63, 194, 255, 0.85), transparent 44%);
-  box-shadow: 0 0 24px rgba(63, 194, 255, 0.34);
+    conic-gradient(from 30deg, transparent, rgba(184, 184, 184, 0.85), transparent 44%);
+  box-shadow: 0 0 24px rgba(184, 184, 184, 0.34);
 }
 
 .nav-links {
@@ -132,6 +134,7 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   min-height: 46px;
   padding: 0 20px;
   border-radius: 999px;
@@ -141,14 +144,63 @@ p {
 
 .nav-cta,
 .button-primary {
-  background: var(--accent);
-  color: #071219;
-  box-shadow: 0 16px 38px rgba(63, 194, 255, 0.18);
+  background: white;
+  color: #000;
+  box-shadow: none;
+}
+
+.nav-cta {
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid #fff;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.download-icon {
+  width: 9px;
+  height: 14px;
+  flex: 0 0 auto;
 }
 
 .nav-cta:hover,
 .button:hover {
   transform: translateY(-2px);
+}
+
+.download-action:hover {
+  background: #1e1f20;
+  color: #fff;
+  border-color: transparent;
+}
+
+.button-primary.download-action:hover {
+  background: #1e1f20;
+  color: #fff;
+}
+
+.nav-cta.download-action:hover {
+  background: #1e1f20;
+  color: #fff;
+  border-color: transparent;
+}
+
+.nav-cta.download-action {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.hero-actions .download-action {
+  background: #1e1f20;
+  color: #fff;
+  border-color: transparent;
+}
+
+.hero-actions .download-action:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
 }
 
 .button-secondary {
@@ -158,14 +210,18 @@ p {
 }
 
 .button-secondary:hover {
-  border-color: rgba(63, 194, 255, 0.6);
+  border-color: rgba(184, 184, 184, 0.6);
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   min-height: calc(100vh - 74px);
   display: grid;
-  align-items: end;
-  padding: 130px 0 58px;
+  padding: 130px 0 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.66) 72%, var(--primary)),
+    url("/hero%20cosmo.jpg") center/cover no-repeat;
 }
 
 .hero::after {
@@ -174,6 +230,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1;
   height: 34%;
   background: linear-gradient(to top, var(--primary), transparent);
   pointer-events: none;
@@ -182,26 +239,18 @@ p {
 .hero-scene {
   position: absolute;
   inset: 0;
-  isolation: isolate;
-}
-
-.star-field {
-  position: absolute;
-  inset: 0;
-  opacity: 0.78;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.76) 0 1px, transparent 1.6px),
-    radial-gradient(circle, rgba(63, 194, 255, 0.65) 0 1px, transparent 1.8px);
-  background-position: 0 0, 38px 58px;
-  background-size: 116px 116px, 168px 168px;
-  animation: drift 22s linear infinite;
+  z-index: 0;
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.36)),
+    url("/hero%20cosmo.jpg") center/cover no-repeat;
+  pointer-events: none;
 }
 
 .orbit {
   position: absolute;
-  left: 50%;
-  top: 47%;
-  border: 1px solid rgba(63, 194, 255, 0.22);
+  left: clamp(340px, calc((100vw - min(100% - 40px, var(--max-width))) / 2 + 380px), 50%);
+  top: clamp(250px, 43vh, 430px);
+  border: 1px solid rgba(184, 184, 184, 0.22);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(-18deg);
 }
@@ -214,7 +263,7 @@ p {
   height: 9px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 18px rgba(63, 194, 255, 0.8);
+  box-shadow: 0 0 18px rgba(184, 184, 184, 0.8);
 }
 
 .orbit::before {
@@ -236,20 +285,6 @@ p {
   width: min(76vw, 720px);
   height: 260px;
   transform: translate(-50%, -50%) rotate(16deg);
-}
-
-.wallet-visual {
-  position: absolute;
-  right: max(32px, calc((100vw - var(--max-width)) / 2));
-  top: 19%;
-  width: min(360px, 38vw);
-  padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 8px;
-  background: rgba(18, 18, 18, 0.86);
-  box-shadow: 0 38px 110px rgba(0, 0, 0, 0.46), 0 0 56px rgba(63, 194, 255, 0.12);
-  backdrop-filter: blur(14px);
-  animation: float 7s ease-in-out infinite;
 }
 
 .wallet-top {
@@ -275,9 +310,9 @@ p {
 .balance-card {
   min-height: 142px;
   padding: 22px;
-  border: 1px solid rgba(63, 194, 255, 0.32);
+  border: 1px solid rgba(184, 184, 184, 0.32);
   border-radius: 8px;
-  background: linear-gradient(145deg, rgba(63, 194, 255, 0.14), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(145deg, rgba(184, 184, 184, 0.14), rgba(255, 255, 255, 0.05));
 }
 
 .balance-card small,
@@ -327,7 +362,7 @@ p {
   width: fit-content;
   margin: 14px auto 0;
   padding: 8px 13px;
-  border: 1px solid rgba(63, 194, 255, 0.34);
+  border: 1px solid rgba(184, 184, 184, 0.34);
   border-radius: 999px;
   color: var(--accent);
   font-size: 0.82rem;
@@ -336,9 +371,9 @@ p {
 
 .hero-content {
   position: relative;
+  align-self: start;
   z-index: 2;
   max-width: 760px;
-  margin-left: max(20px, calc((100vw - var(--max-width)) / 2));
 }
 
 .eyebrow,
@@ -367,8 +402,50 @@ h1 {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
-  margin-top: 34px;
+  margin-top: 54px;
+}
+
+.cosmo-note {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(420px, 64vw, 820px);
+  overflow: hidden;
+  background:
+    linear-gradient(to bottom, var(--primary) 0%, rgba(30, 30, 30, 0) 18%, rgba(30, 30, 30, 0) 78%, var(--primary) 100%),
+    #050505;
+}
+
+.cosmo-note::before,
+.cosmo-note::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 28%;
+  pointer-events: none;
+}
+
+.cosmo-note::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+}
+
+.cosmo-note::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--primary), transparent);
+}
+
+.cosmo-note img {
+  width: min(100%, 1536px);
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.92;
 }
 
 .stats {
@@ -403,6 +480,94 @@ h1 {
 .ecosystem,
 .download {
   padding: 104px 0;
+}
+
+.trust {
+  padding-bottom: 0;
+}
+
+.security-bridge {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.security-bridge::before,
+.security-bridge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 30%;
+  pointer-events: none;
+}
+
+.security-bridge::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+}
+
+.security-bridge::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--primary), transparent);
+}
+
+.security-bridge img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 28vw, 420px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.ecosystem {
+  padding-top: 0;
+}
+
+.download{
+  padding-top: 300px;
+}
+
+.intro {
+  background-image:
+    linear-gradient(to bottom, var(--primary) 0%, rgba(30, 30, 30, 0.72) 20%, rgba(30, 30, 30, 0.78) 78%, var(--primary) 100%),
+    linear-gradient(90deg, rgba(30, 30, 30, 0.92), rgba(30, 30, 30, 0.32) 48%, rgba(30, 30, 30, 0.88)),
+    url("/backcosmo.png");
+  background-size: auto, auto, 4000px auto;
+}
+
+.trust {
+  background-image:
+    linear-gradient(to bottom, var(--primary) 0%, rgba(30, 30, 30, 0.68) 24%, rgba(30, 30, 30, 0.76) 76%, var(--primary) 100%),
+    linear-gradient(90deg, rgba(30, 30, 30, 0.86), rgba(30, 30, 30, 0.38) 58%, rgba(30, 30, 30, 0.92)),
+    url("/backcosmo.png");
+  background-position: left;
+  background-size: auto, auto, 5000px auto;
+}
+
+.download {
+  background-image:
+    linear-gradient(to bottom, var(--primary) 0%, rgba(30, 30, 30, 0.62) 30%, rgba(30, 30, 30, 0.84) 82%, var(--primary) 100%),
+    linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(30, 30, 30, 0.46), rgba(30, 30, 30, 0.9)),
+    url("/backcosmo.png");
+  background-position: bottom;
+  background-size: auto, auto, 1800px auto;
+}
+
+.features {
+  background: #f4f4f0;
+  color: #050505;
+}
+
+.features .eyebrow,
+.features .card-eyebrow {
+  color: #555;
+}
+
+.features h2,
+.features h3 {
+  color: #050505;
 }
 
 .section-heading {
@@ -452,7 +617,7 @@ h2 {
 .feature-card:hover,
 .ecosystem-item:hover {
   transform: translateY(-4px);
-  border-color: rgba(63, 194, 255, 0.46);
+  border-color: rgba(184, 184, 184, 0.46);
   background: var(--panel-strong);
 }
 
@@ -489,6 +654,22 @@ h2 {
   margin-top: 14px;
 }
 
+.features .feature-card {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: #fff;
+  color: #050505;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
+}
+
+.features .feature-card:hover {
+  border-color: rgba(0, 0, 0, 0.24);
+  background: #fbfbf8;
+}
+
+.features .feature-card p {
+  color: #4c4c4c;
+}
+
 .icon {
   position: relative;
   display: grid;
@@ -496,36 +677,48 @@ h2 {
   width: 58px;
   height: 58px;
   margin-bottom: 28px;
-  border: 1px solid rgba(63, 194, 255, 0.36);
+  border: 1px solid rgba(184, 184, 184, 0.36);
   border-radius: 8px;
-  background: rgba(63, 194, 255, 0.08);
+  background: rgba(184, 184, 184, 0.08);
 }
 
-.icon span {
-  width: 25px;
-  height: 25px;
-  border: 2px solid var(--accent);
+.features .icon {
+  width: 70px;
+  height: 70px;
+  border-color: rgba(0, 0, 0, 0.12);
+  background: #050505;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 58%;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 58%;
 }
 
-.icon-shield span {
-  border-radius: 50% 50% 45% 45%;
-  clip-path: polygon(50% 0, 100% 18%, 88% 78%, 50% 100%, 12% 78%, 0 18%);
+.features .icon-circle {
+  mask-image: url("/circle.svg");
+  -webkit-mask-image: url("/circle.svg");
 }
 
-.icon-spark span {
-  border-radius: 4px;
-  transform: rotate(45deg);
+.features .icon-connection {
+  mask-image: url("/connection.svg");
+  mask-size: 72%;
+  -webkit-mask-image: url("/connection.svg");
+  -webkit-mask-size: 72%;
 }
 
-.icon-bolt span {
-  clip-path: polygon(55% 0, 100% 0, 62% 42%, 90% 42%, 30% 100%, 45% 56%, 16% 56%);
-  background: var(--accent);
-  border: 0;
+.features .icon-planet {
+  mask-image: url("/planet.svg");
+  mask-size: 68%;
+  -webkit-mask-image: url("/planet.svg");
+  -webkit-mask-size: 68%;
 }
 
-.icon-devices span {
-  border-radius: 5px;
-  box-shadow: 15px 8px 0 -4px var(--primary), 15px 8px 0 -2px var(--accent);
+.features .icon-rocket {
+  mask-image: url("/rocket.svg");
+  mask-size: 42%;
+  -webkit-mask-image: url("/rocket.svg");
+  -webkit-mask-size: 42%;
 }
 
 .trust-layout {
@@ -573,7 +766,7 @@ h2 {
   height: 18px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: inset 0 0 0 5px #092230;
+  box-shadow: inset 0 0 0 5px #2a2a2a;
 }
 
 .meter {
@@ -607,15 +800,24 @@ h2 {
   min-height: 80px;
   padding: 18px;
   font-weight: 800;
+  cursor: default;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .mini-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 24px;
   height: 24px;
-  border: 1px solid rgba(63, 194, 255, 0.68);
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent) 0 3px, transparent 4px);
+  color: var(--secondary);
+}
+
+.mini-mark svg {
+  width: 9px;
+  height: 14px;
+  flex: 0 0 auto;
+  transform: scaleX(-1);
 }
 
 .download-panel {
@@ -624,7 +826,7 @@ h2 {
   gap: 28px;
   align-items: center;
   padding: 36px;
-  background: linear-gradient(120deg, rgba(63, 194, 255, 0.13), rgba(255, 255, 255, 0.055));
+  background: linear-gradient(120deg, rgba(184, 184, 184, 0.13), rgba(255, 255, 255, 0.055));
 }
 
 .download-panel h2 {
@@ -638,19 +840,37 @@ h2 {
 }
 
 .footer {
-  padding: 42px 0 30px;
-  background: #171717;
+  padding: 56px 0 36px;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent 18%),
+    #111111;
 }
 
 .footer-layout {
   display: grid;
   grid-template-columns: 1fr auto auto;
   gap: 42px;
-  align-items: start;
+  align-items: center;
 }
 
 .footer p {
   margin-top: 14px;
+  max-width: 420px;
+  color: var(--muted);
+}
+
+.footer .brand {
+  gap: 12px;
+}
+
+.footer-logo {
+  width: 124px;
+  height: 22px;
+}
+
+.footer-links {
+  flex-wrap: wrap;
 }
 
 .footer-links,
@@ -663,22 +883,28 @@ h2 {
   color: var(--muted);
 }
 
+.footer-links a {
+  padding: 8px 0;
+}
+
 .socials a {
   display: grid;
   place-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(184, 184, 184, 0.24);
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--muted);
   font-size: 0.75rem;
   font-weight: 800;
-  transition: color 180ms ease, border-color 180ms ease;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .socials a:hover {
   color: var(--secondary);
-  border-color: rgba(63, 194, 255, 0.58);
+  border-color: rgba(184, 184, 184, 0.58);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .copyright {
@@ -706,7 +932,13 @@ h2 {
 
 @keyframes drift {
   to {
-    background-position: 116px 116px, 206px 174px;
+    background-position: 54px 71px, 106px 100px, 189px 102px, 274px 202px, 375px 209px;
+  }
+}
+
+@keyframes driftChaos {
+  to {
+    transform: translate3d(-72px, 48px, 0);
   }
 }
 
@@ -734,7 +966,7 @@ h2 {
 
   .hero {
     min-height: 860px;
-    padding-top: 112px;
+    padding: 112px 0 0;
   }
 
   .wallet-visual {
@@ -750,7 +982,12 @@ h2 {
 
   .hero-content {
     margin: 0 auto;
-    padding-top: 390px;
+    margin-top: 390px;
+  }
+
+  .orbit {
+    left: 50%;
+    top: 58%;
   }
 
   .stats-grid,
@@ -791,11 +1028,15 @@ h2 {
 
   .hero {
     min-height: 810px;
-    padding: 86px 0 46px;
+    padding: 86px 0 0;
   }
 
   .hero-content {
-    padding-top: 374px;
+    margin-top: 374px;
+  }
+
+  .orbit {
+    top: 55%;
   }
 
   h1 {
@@ -819,6 +1060,21 @@ h2 {
   .ecosystem,
   .download {
     padding: 76px 0;
+  }
+
+  .intro {
+    background-position: center, center, 50% 18%;
+    background-size: auto, auto, 1250px auto;
+  }
+
+  .trust {
+    background-position: center, center, 68% 48%;
+    background-size: auto, auto, 1380px auto;
+  }
+
+  .download {
+    background-position: center, center, 36% 76%;
+    background-size: auto, auto, 1320px auto;
   }
 
   .start-card,
