@@ -80,13 +80,22 @@ function ArrowIcon() {
   );
 }
 
+function BrandLogo({ className = "" }: { className?: string }) {
+  return (
+    <span className={`brand-logo ${className}`.trim()} aria-hidden="true">
+      <span className="cosmos-logo" />
+      <img className="wallet-logo" src="/wallet.svg" alt="" />
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <header className="site-header">
         <nav className="nav" aria-label="Main navigation">
           <a className="brand" href="#top" aria-label="Cosmos Wallet home">
-            <span className="cosmos-logo" aria-hidden="true" />
+            <BrandLogo />
           </a>
           <div className="nav-links">
             <a href="#features">Features</a>
@@ -104,15 +113,12 @@ export default function Home() {
 
       <main id="top">
         <section className="hero" aria-labelledby="hero-title">
-          <div
-            className="hero-scene"
-            role="img"
-            aria-label="Cosmos Wallet interface floating over a connected blockchain network"
-          />
-
           <div className="container hero-content fade-up">
             <p className="eyebrow">Secure multichain self-custody</p>
-            <h1 id="hero-title">COSMOS WALLET</h1>
+            <h1 id="hero-title">
+              <span>COSMOS</span>
+              <span>WALLET</span>
+            </h1>
             <p className="hero-copy">
               A polished cryptocurrency wallet for people who need serious security, fast transactions, and a calm
               interface across every chain they use.
@@ -128,7 +134,6 @@ export default function Home() {
 
         <section className="cosmo-note" aria-label="Cosmos Wallet app preview">
           <img src="/comsonote.png" alt="" aria-hidden="true" />
-
         </section>
 
         <section className="stats" aria-label="Cosmos Wallet network statistics">
@@ -145,7 +150,9 @@ export default function Home() {
         <section className="intro" aria-labelledby="intro-title">
           <div className="container section-heading fade-up">
             <p className="eyebrow">Get started: Create. Connect. Transact.</p>
-            <h2 id="intro-title">A wallet experience designed for trust from the first signature.</h2>
+            <h2 id="intro-title" className="intro-title">
+              A wallet experience designed for trust from the first signature.
+            </h2>
           </div>
           <div className="container start-grid">
             {gettingStarted.map((item, index) => (
@@ -161,7 +168,9 @@ export default function Home() {
         <section className="features" id="features" aria-labelledby="features-title">
           <div className="container section-heading fade-up">
             <p className="eyebrow">Wallet capabilities</p>
-            <h2 id="features-title">Everything needed to manage assets without losing context.</h2>
+            <h2 id="features-title" className="features-title">
+              Everything needed to manage assets without losing context.
+            </h2>
           </div>
           <div className="container feature-grid">
             {features.map((feature) => (
@@ -220,7 +229,9 @@ export default function Home() {
         <section className="ecosystem" id="ecosystem" aria-labelledby="ecosystem-title">
           <div className="container section-heading fade-up">
             <p className="eyebrow">Explore chains, apps, and tools</p>
-            <h2 id="ecosystem-title">A single command center for the open crypto economy.</h2>
+            <h2 id="ecosystem-title" className="ecosystem-title">
+              A single command center for the open crypto economy.
+            </h2>
           </div>
           <div className="container ecosystem-grid" aria-label="Cosmos Wallet supported tools">
             {ecosystem.map((item) => (
@@ -256,7 +267,7 @@ export default function Home() {
         <div className="container footer-layout">
           <div>
             <a className="brand" href="#top" aria-label="Cosmos Wallet home">
-              <span className="cosmos-logo footer-logo" aria-hidden="true" />
+              <BrandLogo className="footer-logo" />
             </a>
             <p>Secure self-custody for a multichain world.</p>
           </div>
