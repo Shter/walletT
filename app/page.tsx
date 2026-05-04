@@ -82,10 +82,7 @@ function ArrowIcon() {
 
 function BrandLogo({ className = "" }: { className?: string }) {
   return (
-    <span className={`brand-logo ${className}`.trim()} aria-hidden="true">
-      <span className="cosmos-logo" />
-      <img className="wallet-logo" src="/wallet.svg" alt="" />
-    </span>
+    <img className={`brand-logo ${className}`.trim()} src="/cosmolog1.png" alt="" aria-hidden="true" />
   );
 }
 
